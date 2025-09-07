@@ -2,7 +2,7 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-<!--Below define the Parent of this Module file-->
+    <!--Below define the Parent of this Module file-->
     <parent>
         <groupId>com.tutorialapi</groupId>
         <artifactId>tutorialapi</artifactId>
@@ -12,6 +12,7 @@
     <artifactId>tutorialapi-server</artifactId>
 
     <dependencies>
+        <!--Used for Application Server-->
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-server</artifactId>
@@ -20,6 +21,17 @@
         <dependency>
             <groupId>org.eclipse.jetty</groupId>
             <artifactId>jetty-http</artifactId>
+        </dependency>
+
+<!--        Used for Logging-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
         </dependency>
 
     </dependencies>
