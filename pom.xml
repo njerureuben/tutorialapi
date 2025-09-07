@@ -12,11 +12,72 @@
 
 
     <modules>
-        <module>tutorialapi-server</module>
         <module>tutorialapi-rest</module>
+        <module>tutorialapi-server</module>
     </modules>
 
+    <dependencyManagement>
+
+        <dependencies>
+
+<!--            <dependency>-->
+<!--                <groupId>org.eclipse.jetty</groupId>-->
+<!--                <artifactId>jetty-http</artifactId>-->
+<!--                <version>12.1.0</version>-->
+<!--            </dependency>-->
+
+<!--            <dependency>-->
+<!--                <groupId>org.eclipse.jetty</groupId>-->
+<!--                <artifactId>jetty-server</artifactId>-->
+<!--                <version>12.1.0</version>-->
+<!--            </dependency>-->
+
+<!--            <dependency>-->
+<!--                <groupId>org.eclipse.jetty</groupId>-->
+<!--                <artifactId>jetty-util</artifactId>-->
+<!--                <version>12.1.0</version>-->
+<!--            </dependency>-->
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-bom</artifactId>
+                <version>12.1.0</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.formdev</groupId>
+                <artifactId>flatlaf</artifactId>
+                <version>3.6.1</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.formdev</groupId>
+                <artifactId>flatlaf-extras</artifactId>
+                <version>3.6.1</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.formdev</groupId>
+                <artifactId>flatlaf-intellij-themes</artifactId>
+                <version>3.6.1</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.formdev</groupId>
+                <artifactId>flatlaf-jide-oss</artifactId>
+                <version>3.6.1</version>
+                <scope>test</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
     <build>
+
         <pluginManagement>
             <plugins>
     <!--Here define all the versions of the plugin that will be used-->
@@ -76,6 +137,27 @@
                     <version>3.1.4</version>
                 </plugin>
 
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.8.1</version>
+
+                    <configuration>
+                        <failOnWarning>true</failOnWarning>
+                        <verbose>true</verbose>
+                    </configuration>
+
+                    <executions>
+                        <execution>
+                            <id>analyze-only</id>
+                            <goals>
+                                <goal>analyze-only</goal>
+                            </goals>
+                            <phase>verify</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+
             </plugins>
         </pluginManagement>
 
@@ -125,7 +207,14 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+
         </plugins>
 
     </build>
+
 </project>
