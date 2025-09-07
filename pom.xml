@@ -7,6 +7,7 @@
 
 
     <properties>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -99,13 +100,14 @@
                     <version>3.14.0</version>
 
                     <configuration>
-                        <compilerArgs>
-                            <arg>werror</arg>
-<!--                            <arg>1000</arg>-->
-                            <arg>xlint:all</arg>
-<!--                            <arg>-J-Duser.language=en_us</arg>-->
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
 
+                        <compilerArgs>
+                            <arg>-Werror</arg>
+                            <arg>-Xlint:all</arg>
                         </compilerArgs>
+
                         <failOnError>true</failOnError>
                         <failOnWarning>true</failOnWarning>
                         <showDeprecation>true</showDeprecation>
